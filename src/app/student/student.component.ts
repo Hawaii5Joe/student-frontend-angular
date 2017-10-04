@@ -1,15 +1,24 @@
-import { Component, OnInit,Input } from '@angular/core';
-import { MdDialog, MdDialogRef } from '@angular/material';
+
+import { Component, OnInit }      from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location }               from '@angular/common';
+import { NgForm } from '@angular/forms';
+import {MdDialog, MdDialogRef} from '@angular/material'
 
 import { DataService } from '../data.service'
-import { DeleteConfirmComponent } from '../delete-confirm/delete-confirm.component'
+import {DeleteConfirmComponent} from '../delete-confirm/delete-confirm.component'
 
 @Component({
   selector: 'app-student',
   templateUrl: './student.component.html',
-  styleUrls: ['./student.component.css'],
+  styleUrls: ['./student.component.css']
+
 })
 export class StudentComponent implements OnInit {
+
+  student: object;
+  majors: object[];
+
 
   errorMessage: string;
   successMessage: string;
@@ -40,5 +49,7 @@ export class StudentComponent implements OnInit {
       }
     });
   }
+
+  
 
 }

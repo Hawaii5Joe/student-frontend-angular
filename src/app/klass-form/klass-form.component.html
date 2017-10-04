@@ -1,0 +1,53 @@
+<ol class="breadcrumb">
+  <li><a routerLink="/home">Home</a></li>
+  <li><a routerLink="/klass">Classes</a></li>
+  <li class="active">Manage Class</li>
+</ol>
+
+<br/>
+
+<a class="btn btn-primary" routerLink="/klass">Return to Classs</a>
+
+<h1>Manage Class</h1>
+
+<app-status-message [successMessage]="successMessage" [errorMessage]="errorMessage"></app-status-message>
+
+<form novalidate (ngSubmit)="saveKlass(KlassForm)" #KlassForm="ngForm" class="form-horizontal">
+  <input [ngModel]="klass?.class_id" ngModel #class_id="ngModel" type="hidden" name="class_id">
+  <div class="form-group">
+    <label for="instructor_id" class="col-sm-2 control-label">Instructor ID</label>
+    <div class="col-sm-10">
+      <input [ngModel]="klass?.instructor_id" ngModel #instructor_id="ngModel" type="text" class="form-control" id="instructor_id"
+        name="instructor_id" placeholder="Instructor ID" pattern="\d+" required minlength="2">
+      <span *ngIf="formErrors.instructor_id" class="text-danger">
+          {{ formErrors.instructor_id }}
+      </span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="subject" class="col-sm-2 control-label"> Subject</label>
+    <div class="col-sm-10">
+      <input [ngModel]="klass?.subject" ngModel #subject="ngModel" type="text" class="form-control" id="subject" name="subject"
+        placeholder="101" pattern="\d+" required minlength="2">
+      <span *ngIf="formErrors.subject" class="text-danger">
+          {{ formErrors.subject }}
+      </span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="course" class="col-sm-2 control-label">Course</label>
+    <div class="col-sm-10">
+      <input [ngModel]="klass?.course" ngModel #course="ngModel" type="text" class="form-control" id="course" name="course" placeholder="English"
+        pattern="\d+" required minlength="2">
+      <span *ngIf="formErrors.course" class="text-danger">
+        {{ formErrors.course }}
+      </span>
+    </div>
+  </div>
+  <!-- submit button -->
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button [disabled]="!KlassForm.form.valid" type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
